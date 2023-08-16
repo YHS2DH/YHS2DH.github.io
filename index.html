@@ -10,14 +10,19 @@
 	<meta property="og.image" content="//YHS2DH.github.io/main.svg">
 	<meta property="og.description" content="최용현&안다현 결혼을 축하해 주세요">
 	<title>YHS2DH</title>
-	<script src="https://unpkg.com/pageable@latest/dist/pageable.min.js"></script>
-	<link rel="stylesheet" href="https://unpkg.com/pageable@latest/dist/pageable.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/sakura-js@1.1.1/dist/sakura.min.js"></script>
+
+	<link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sakura-js@1.1.1/dist/sakura.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/pageable@latest/dist/pageable.min.css">
+	
+	<script src="pageable.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sakura-js@1.1.1/dist/sakura.min.js"></script>
+	
 	<style>
 		.flex { display: flex; }
 		.flex.center { justify-content: center; align-items: center; }
 		.full-height { height: 100%; }
+		.full-width { width: 100%; }
 		.max-width-80 { max-width: 80%; }
 
 		#container > div { background: #f5f5f5; }
@@ -25,55 +30,88 @@
 		.pg-pips a { background: #ffb1bf !important; }
 		.pg-pips a::after { background: #ffb1bf !important; }
 		.pg-pips { transition-delay: 1s; transition-duration: 1s; opacity: 0; }
+
+		img { max-width: 100%; }
+
+		.pink { color: #e6617a; }
+		.blue { color: #77adff; }
+
+		.final { font-family: "inter";}
+		.final .input { border: 1px solid #e6617a; padding: .25rem; margin: .5rem 0; display: block; box-sizing: border-box;  height: 34px; }
+		.final h3 { margin: .5rem 0; font-weight: bold; }
+		.final p { font-size: 14px; }
+
+		p.right { text-align: right; }
+
+		h3.left { border-left: 3px solid #77adff; color: #77adff; font-size: 16px; padding-left: .25rem; }
+		h3.right { border-right: 3px solid #e6617a; color: #e6617a; font-size: 16px; padding-right: .25rem; text-align: right; }
 	</style>
 </head>
 <body>
 	<div id="container">
 
-		<div data-anchor="page 1">
+		<div data-anchor="home">
 			<div class="flex center full-height">
 				<div class="max-width-80">
-					<img style="max-width: 100%;" src="main.svg">
+					<img src="main.svg">
 				</div>
 			</div>  
 		</div>
 
-		<div data-anchor="page 2">
+		<div data-anchor="worship">
 			<div class="flex center full-height">
-				<div style="max-width: 80%; height: 80%;">
-					<img style="max-width: 100%;" src="second.svg">
+				<div class="max-width-80">
+					<img src="worship.svg">
 				</div>
 			</div>
 		</div>
 
-		<div data-anchor="page 5">
+		<div data-anchor="map">
 			<div class="flex center full-height">
-				<div style="max-width: 80%;">
-					<h1>Page 3</h1>
+				<div class="max-width-80">
+					<img src="map.svg">
 				</div>
 			</div>
 		</div>
 
-		<div data-anchor="page 4">
+		<div data-anchor="calendar">
 			<div class="flex center full-height">
-				<div style="max-width: 80%;">
-					<h1>Page 4</h1>
+				<div class="max-width-80">
+					<img src="calendar.svg">
+				</div>
+			</div>
+		</div>
+
+		<div data-anchor="final">
+			<div class="flex center full-height">
+				<div class="max-width-80 final">
+
+					<img class="full-width" src="final01.svg">
+					<a class="input" onclick="makeList(this)"></a>
+					<img class="full-width" src="final02.svg">
+					
+					<h3 class="left">신랑측 마음 전해주실 곳</h3>
+					<p>최수영: 352 1509 9833 83 농협<br>권영경: 302 0300 6358 91 농협<br>최용현: 302 1682 7428 31 농협</p>
+
+					<h3 class="right">신부측 마음 전해주실 곳</h3>
+					<p class="right">안종수: 508 02 082418 농협<br>김점숙: 9003 2093 5849 1 새마을금고<br>안다현: 9003 2096 2720 5 새마을금고</p>
+
+					<img src="character.svg">
 				</div>
 			</div>
 		</div>
 
 	</div>
 	<script>
+		const makeList = function(element) {
+			const content = prompt('참석 여부를 알려주시면 더 아름답게 준비해 볼게요');
+
+			element.innerHTML = content;
+		}
+
 		const pages = new Pageable("#container", {
 			pips: true,
 			animation: 400,
-			
-			events: {
-				wheel: true,
-				mouse: true,
-				touch: true,
-				keydown: true,
-			},
 
 			onStart: function(page) {
 				const opacity  = page.includes("1") ? 0 : 1;
