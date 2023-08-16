@@ -1,0 +1,62 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324.13 299.12">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: GangwonEduPowerExtraBold-KSCpc-EUC-H, GangwonEduPower;
+        font-size: 9px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #e7627b;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #231f20;
+      }
+
+      .cls-3, .cls-2 {
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke: #fff;
+      }
+
+      .cls-4 {
+        font-family: 'KBIZforSMEsmjo_M-KSCpc-EUC-H', 'KBIZforSMEsmjo M';
+        font-size: 7.84px;
+      }
+
+      .cls-4, .cls-5 {
+        fill: #231f20;
+      }
+
+      .cls-5 {
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <line class="cls-3" x1="155.22" y1="148.37" x2="241.6" y2="148.37"/>
+  <polygon class="cls-3" points="241.6 51.85 241.6 291.87 239.61 291.87 13.17 291.87 13.17 287.12 13.17 60.59 13.17 51.85 237.99 51.85 241.6 51.85"/>
+  <g>
+    <circle class="cls-2" cx="156.32" cy="175.45" r="14.06"/>
+    <circle class="cls-2" cx="156.32" cy="175.45" r="11.35"/>
+  </g>
+  <circle class="cls-5" cx="217.02" cy="64.7" r="4.41"/>
+  <circle class="cls-5" cx="263.18" cy="133.59" r="4.41"/>
+  <circle class="cls-5" cx="267.6" cy="216.88" r="4.41"/>
+  <circle class="cls-5" cx="156.32" cy="135.29" r="4.41"/>
+  <circle class="cls-5" cx="52.12" cy="67.12" r="4.41"/>
+  <circle class="cls-5" cx="39.7" cy="186.41" r="4.41"/>
+  <text class="cls-4" transform="translate(198.41 81.55)"><tspan x="0" y="0">파리바게뜨</tspan><tspan x="0" y="9.41">익산어양점</tspan></text>
+  <text class="cls-4" transform="translate(21.71 84.36)"><tspan x="0" y="0">농협 영등제일지점</tspan></text>
+  <text class="cls-4" transform="translate(21.99 203.74)"><tspan x="0" y="0">해송 사우나</tspan></text>
+  <text class="cls-4" transform="translate(246.26 234.06)"><tspan x="0" y="0">익산초등학교</tspan></text>
+  <text class="cls-4" transform="translate(250.02 149.56)"><tspan x="0" y="0">커피하임</tspan></text>
+  <text class="cls-4" transform="translate(127.71 124.76)"><tspan x="0" y="0">스탠다드 베이커리</tspan></text>
+  <text class="cls-1" transform="translate(133.24 201.28)"><tspan x="0" y="0">익산천광교회</tspan></text>
+  <line class="cls-3" x1="284.09" y1="51.85" x2="241.6" y2="51.85"/>
+  <line class="cls-3" x1="284.09" y1="291.87" x2="241.6" y2="291.87"/>
+</svg>
