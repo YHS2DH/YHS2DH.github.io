@@ -4,19 +4,20 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta id="status-bar" name="theme-color" content="f5f5f5" />
-	<meta property="og.url" content="https://YHS2DH.github.io">
-	<meta property="og.title" content="최용현 vs 안다현">
-	<meta property="og.type" content="website">
-	<meta property="og.image" content="//YHS2DH.github.io/main.svg">
-	<meta property="og.description" content="최용현&안다현 결혼을 축하해 주세요">
+	<meta property="og:url" content="https://YHS2DH.github.io">
+	<meta property="og:title" content="최용현❤안다현">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="//YHS2DH.github.io/main.svg">
+	<meta property="og:description" content="최용현&안다현 결혼을 축하해 주세요">
 	<title>YHS2DH</title>
 
 	<link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sakura-js@1.1.1/dist/sakura.min.css">
 	<link rel="stylesheet" href="https://unpkg.com/pageable@latest/dist/pageable.min.css">
 	
-	<script src="pageable.js"></script>
+	
 	<script src="https://cdn.jsdelivr.net/npm/sakura-js@1.1.1/dist/sakura.min.js"></script>
+	<script src="pageable.js"></script>
 	
 	<style>
 		.flex { display: flex; }
@@ -112,9 +113,10 @@
 		const pages = new Pageable("#container", {
 			pips: true,
 			animation: 400,
+			swipeThreshold: 100,
 
 			onStart: function(page) {
-				const opacity  = page.includes("1") ? 0 : 1;
+				const opacity  = page.includes("home") ? 0 : 1;
 				const delay    = opacity ? "1s" : "0s";
 				const pips     = document.querySelector(".pg-pips");
 				const duration = opacity ? "1s" : ".3s";
@@ -126,7 +128,7 @@
 			}
 		});
 
-		new Sakura("body", {
+		new Sakura("#container", {
 			fallSpeed: 3,
 			delay: 1000,
 		});
