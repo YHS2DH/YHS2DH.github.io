@@ -75,7 +75,7 @@
 			margin: 3rem auto;
 			width: 8rem;
 		}
-		.fp-overflow { opacity: 1; }
+		.fp-overflow { opacity: 0; }
 
 		.loading {
 			position: fixed;
@@ -127,7 +127,7 @@
 			<div style="display: flex; justify-content: center; flex-direction: column;">
 				<img src="images/final01.svg">
 				<a id="sendButton" class="waves-effect waves-light btn pink lighten-2 modal-trigger" href="#modal" style="margin: 1rem auto; opacity: 0;">참석합니다</a>
-
+				<a id="test" class="waves-effect waves-light btn black modal-trigger" href="#thanks"></a>
 				<div id="tribute" style="opacity: 0; margin-top: 3rem;">
 					<div>
 						<img src="images/final02.svg">
@@ -161,11 +161,26 @@
 		<div class="modal-content" style="max-width: 333px; margin: auto;">
 			<img src="images/modal01.svg">
 			<div class="flex center">
-				<input type="text">
-				<button class="waves-effect waves-light">보내기</button>
+				<input type="text" id="memo">
+				<button class="waves-effect waves-light" id="send">보내기</button>
 			</div>
 			<img src="images/modal02.svg">
 		</div>
+	</div>
+	
+	<div id="thanks" class="modal">
+		<div class="modal-content">
+			<div style="text-align: center; color: #777777b2; font-weight: bold;">
+				<span style="color: #E6617A; font-size: 1.5rem; margin-bottom: 1rem;">감사합니다.</span>
+				<br>
+				부디 꼭 참석하시어
+				<br>
+				축복받으시기 바랍니다.
+			</div>
+		</div>
+		<div class="">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">확인</a>
+    </div>
 	</div>
 
 	<script>
@@ -173,6 +188,13 @@
 
 		const modalElement = document.querySelector(".modal");
 		const modal = M.Modal.init(modalElement, {});
+		const thanksElement = document.querySelector("#thanks");
+		const thanks = M.Modal.init(thanksElement, {
+			startingTop: "50%"
+		})
+
+		console.log(thanks);
+
 		const fadeTimeout = function(element, millisecond) {
 			millisecond = millisecond ? millisecond : 0;
 			element.style.transition = "2s";
@@ -216,6 +238,54 @@
 			fallSpeed: 3,
 			delay: 1000,
 		});
+	</script>
+	<script type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+		import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+	
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		const firebaseConfig = {
+			apiKey: "AIzaSyDvKqHz-FoH-Z2_aozwYZ6D2-lvXCVCt7M",
+			authDomain: "notes-2110d.firebaseapp.com",
+			projectId: "notes-2110d",
+			storageBucket: "notes-2110d.appspot.com",
+			messagingSenderId: "329432694297",
+			appId: "1:329432694297:web:4fd609219455852d497488",
+			measurementId: "G-68550VT368"
+		};
+	
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const analytics = getAnalytics(app);
+
+		const db = getFirestore(app);
+
+		async function send() {
+			const memo    = document.querySelector("#memo");
+			const content = memo.value;
+			memo.value    = "";
+
+			if (!content) return;
+
+			modal.close();
+			thanks.open();
+
+			try {
+				const docRef = await addDoc(collection(db, "note"), {
+					memo: content
+				})
+			} catch (e) {
+				console.error(`Error: ${e}`);
+			}
+		}
+
+		document.querySelector("#send").onclick = send;
+
 	</script>
 </body>
 </html>
