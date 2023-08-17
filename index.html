@@ -6,7 +6,7 @@
 	<meta id="status-bar" name="theme-color" content="f5f5f5" />
 	
 	<meta name="title"       property="og:title"       content="최용현❤안다현">
-	<meta name="description" property="og:description" content="9월 6일 결혼합니다.">
+	<meta name="description" property="og:description" content="9월 16일 결혼합니다.">
 	<meta name="image"       property="og:image"       content="https://YHS2DH.github.io/character.png">
 	<meta name="url"         property="og:url"         content="https://YHS2DH.github.io">
 	<meta name="locale"      property="og:locale"      content="ko_KR">
@@ -75,10 +75,40 @@
 			margin: 3rem auto;
 			width: 8rem;
 		}
-		.fp-overflow { opacity: 0; }
+		.fp-overflow { opacity: 1; }
+
+		.loading {
+			position: fixed;
+			display: flex;
+			width: 100%;
+			height: 100%;
+			align-items: center;
+			justify-content: center;
+			background:white;
+			top: 0;
+			left: 0;
+			z-index: 10;
+			animation: loading;
+			animation-duration: 1s;
+			animation-delay: 2s;
+			animation-fill-mode: forwards;
+		}
+
+		@keyframes loading {
+			to { opacity: 0; }
+		}
 	</style>
 </head>
 <body>
+	<div class="loading">
+		<div class="preloader-wrapper big active">
+			<div class="spinner-layer spinner-red">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div id="fullpage">
 		<div class="section title">
 			<img class="png" src="images/title.png">
@@ -139,6 +169,8 @@
 	</div>
 
 	<script>
+		setTimeout(() => document.querySelector(".loading").remove(), 3000);
+
 		const modalElement = document.querySelector(".modal");
 		const modal = M.Modal.init(modalElement, {});
 		const fadeTimeout = function(element, millisecond) {
