@@ -176,10 +176,10 @@
 	<div id="modal" class="modal">
 		<div class="modal-content" style="max-width: 333px; margin: auto;">
 			<img src="images/modal01.svg">
-			<div class="flex center">
+			<form class="flex center">
 				<input type="text" id="memo">
 				<button class="waves-effect waves-light" id="send">보내기</button>
-			</div>
+			</form>
 			<img src="images/modal02.svg">
 		</div>
 	</div>
@@ -208,8 +208,6 @@
 		const thanks = M.Modal.init(thanksElement, {
 			startingTop: "50%"
 		})
-
-		console.log(thanks);
 
 		const fadeTimeout = function(element, millisecond) {
 			millisecond = millisecond ? millisecond : 0;
@@ -258,7 +256,7 @@
 	<script type="module">
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 		import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
-		import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+		import { getFirestore, collection, addDoc, getDocs, Timestamp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 		const firebaseConfig = {
 			apiKey: "AIzaSyDvKqHz-FoH-Z2_aozwYZ6D2-lvXCVCt7M",
@@ -276,7 +274,9 @@
 
 		const db = getFirestore(app);
 
-		async function send() {
+		async function send(event) {
+			event.preventDefault();
+
 			const memo    = document.querySelector("#memo");
 			const content = memo.value;
 			memo.value    = "";
@@ -288,14 +288,15 @@
 
 			try {
 				const docRef = await addDoc(collection(db, "note"), {
-					memo: content
+					memo: content,
+					date: Timestamp.fromDate(new Date()),
 				})
 			} catch (e) {
 				console.error(`Error: ${e}`);
 			}
 		}
 
-		document.querySelector("#send").onclick = send;
+		document.forms[0].onsubmit = send;
 
 	</script>
 </body>
