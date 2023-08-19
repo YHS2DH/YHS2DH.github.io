@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, where, orderBy, query, onSnapshot } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDvKqHz-FoH-Z2_aozwYZ6D2-lvXCVCt7M",
@@ -13,15 +13,15 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 
-const docRef = doc(db, "note", "note");
-const docSnap = await getDoc(docRef);
+const q = query(collection(db, "note"));
 
-if (docSnap.exists()) {
-  console.log("Data is: " + doc.docSnap.data())
-}
-else {
-  console.log("No such docs...");
-}
+const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  const notes = [];
+  querySnapshot.forEach(doc => {
+    notes.push(doc.data().memo)
+  })
+
+  console.log(notes);
+})
