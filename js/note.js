@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-import { getFirestore, collection, getDocs, where, orderBy, query, onSnapshot } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore, collection, deleteDoc, getDocs, where, orderBy, query, onSnapshot, doc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDvKqHz-FoH-Z2_aozwYZ6D2-lvXCVCt7M",
@@ -20,8 +20,14 @@ const q = query(collection(db, "note"));
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
   const notes = [];
   querySnapshot.forEach(doc => {
-    notes.push(doc.data().memo)
+    notes.push({ data: doc.data(), id: doc.id })
   })
 
-  console.log(notes);
+  note.list = notes;
 })
+
+const remove = async function(id) {
+  await deleteDoc(doc(db, "note", id));
+}
+
+window.remove = remove;

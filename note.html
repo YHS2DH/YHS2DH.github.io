@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>방명록</title>
+
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script defer src="js/noteVue.js"></script>
   <script type="module" src="js/note.js"></script>
 
   <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
@@ -21,8 +24,38 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-  
+  <div class="container note">
+		<div class="card">
+			<ul class="collection with-header">
+				<li class="collection-header">
+					<h4>방명록</h4>
+				</li>
+				<li class="collection-item" v-for="(item, index) in list">
+					<div>
+						[{{ index + 1 }}] {{ item.data.memo }}
+						<a href="#!" class="secondary-content">
+							<i class="material-icons pink-text" @click="remove(item.id)">delete</i>
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div id="modal" class="modal">
+			<div class="modal-content">
+				<h4>삭제하시겠습니까?</h4>
+				<p></p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-close waves-effect waves-light btn red">확인</a>
+				<a href="#!" class="modal-close waves-effect waves-light btn green">취소</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
