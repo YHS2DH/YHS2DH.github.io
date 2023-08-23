@@ -73,7 +73,7 @@
 					<tr>
 						<th>번호</th>
 						<th>참석자 및 인원수</th>
-						<th>날짜 및 시간</th>
+						<th>작성일</th>
 						<th>동작</th>
 					</tr>
 				</thead>
@@ -81,7 +81,7 @@
 					<tr v-for="(item, index) in list">
 						<td>{{ index + 1 }}</td>
 						<td>{{ item.data.memo }}</td>
-						<td v-html="filteredTimestamp(item.data.date)"></td>
+						<td v-html="filteredTimestamp2(item.data.date)"></td>
 						<td>
 							<i class="material-icons pink-text text-lighten-2" @click="openModal(item.id)">delete</i>
 						</td>

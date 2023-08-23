@@ -32,6 +32,24 @@ const note = Vue.createApp({
       ];
 
       return dateArray.join("<br>");
+    },
+
+    filteredTimestamp2: function(timestamp) {
+      const date = new Date(timestamp.seconds * 1000);
+      const now  = new Date();
+      const difference = now - date;
+      const daysToMilliseconds = 24 * 60 * 60 * 1000;
+      const timesToMilliseconds = 60 * 60 * 1000;
+
+      if (difference > daysToMilliseconds) {
+        return Math.floor(difference / daysToMilliseconds) + "일 전";
+      }
+      else if (difference < timesToMilliseconds) {
+        return "방금 전";
+      }
+      else {
+        return Math.floor(difference / timesToMilliseconds) + "시간 전";
+      }
     }
   },
 
@@ -44,7 +62,7 @@ const certification = Vue.createApp({
   data: function() {
     const data = {
       password: '',
-      certificated: false,
+      certificated: true,
     }
 
     return data;
