@@ -32,28 +32,35 @@
 <body>
   <div class="container note">
 		<div class="card">
-			<ul class="collection with-header">
-				<li class="collection-header">
-					<h4>방명록</h4>
-				</li>
-				<li class="collection-item" v-for="(item, index) in list">
-					<div>
-						[{{ index + 1 }}] {{ item.data.memo }}
-						<a href="#!" class="secondary-content">
-							<i class="material-icons pink-text" @click="remove(item.id)">delete</i>
-						</a>
-					</div>
-				</li>
-			</ul>
+			<h4 style="padding: 1rem;">방명록</h4>
+			<table class="centered highlight striped">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>참석자 및 인원수</th>
+						<th>날짜 및 시간</th>
+						<th>동작</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(item, index) in list">
+						<td>{{ index + 1 }}</td>
+						<td>{{ item.data.memo }}</td>
+						<td v-html="filteredTimestamp(item.data.date)"></td>
+						<td>
+							<i class="material-icons pink-text text-lighten-2" @click="openModal(item.id)">delete</i>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<div id="modal" class="modal">
 			<div class="modal-content">
-				<h4>삭제하시겠습니까?</h4>
-				<p></p>
+				<p>해당 글을 지우시겠습니까?</p>
 			</div>
 			<div class="modal-footer">
-				<a href="#!" class="modal-close waves-effect waves-light btn red">확인</a>
-				<a href="#!" class="modal-close waves-effect waves-light btn green">취소</a>
+				<a href="javascript:" class="modal-close waves-effect waves-light btn red" @click="remove">확인</a>
+				<a href="javascript:" class="modal-close waves-effect waves-light btn green" style="margin-left: 1rem;">취소</a>
 			</div>
 		</div>
 	</div>

@@ -15,7 +15,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const q = query(collection(db, "note"));
+const q = query(collection(db, "note"), orderBy("date"));
 
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
   const notes = [];
