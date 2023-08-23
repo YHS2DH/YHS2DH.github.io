@@ -79,7 +79,7 @@
 				</thead>
 				<tbody>
 					<tr v-for="(item, index) in list">
-						<td>{{ index + 1 }}</td>
+						<td>{{ list.length - index }}</td>
 						<td>{{ item.data.memo }}</td>
 						<td v-html="filteredTimestamp2(item.data.date)"></td>
 						<td>
