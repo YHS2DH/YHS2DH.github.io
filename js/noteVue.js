@@ -62,7 +62,7 @@ const certification = Vue.createApp({
   data: function() {
     const data = {
       password: '',
-      certificated: true,
+      certificated: false,
     }
 
     return data;
