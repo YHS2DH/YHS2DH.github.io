@@ -39,3 +39,22 @@ const note = Vue.createApp({
     this.modalInit();
   }
 }).mount(".note");
+
+const certification = Vue.createApp({
+  data: function() {
+    const data = {
+      password: '',
+      certificated: false,
+    }
+
+    return data;
+  },
+
+  methods: {
+    login: function() {
+      const pass = "MjAyMzA5MTY=";
+      this.certificated = btoa(this.password) == pass;
+      !this.certificated ? history.back() : '';
+    }
+  }
+}).mount(".certification");

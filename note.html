@@ -28,8 +28,43 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<style>
+		.certification > div {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			z-index: 2;
+			background: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		input[type=password]:not(.browser-default):focus:not([readonly]) {
+			border-bottom: 1px solid #E6617A;
+			box-shadow: 0 1px 0 0 #E6617A;
+		}
+		input[type=password]:not(.browser-default):focus:not([readonly])+label {
+			color: #E6617A;
+		}
+		
+		.certificated { display: none; }
+	</style>
 </head>
 <body>
+	<div class="certification">
+		<div v-if="!certificated">
+			<form class="card" style="padding: 1rem;" @submit.prevent="login">
+				<h5 class="center">방명록</h5>
+				<div class="input-field col s6">
+					<input id="last_name" type="password" v-model="password" class="validate">
+					<label for="last_name">비밀번호</label>
+				</div>
+			</form>
+		</div>
+	</div>
   <div class="container note">
 		<div class="card">
 			<h4 style="padding: 1rem;">방명록</h4>
